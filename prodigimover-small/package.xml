@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>prodigimover-small</name>
+  <version>0.0.0</version>
+  <description>The prodigimover-small package</description>
+
+    <maintainer email="demirneslihan85@gmail.com">Neslihan Demir</maintainer>
+
+  <license>TODO</license>
+
+  <author email="demirneslihan85@gmail.com">Neslihan Demir</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>prodigimover-small_bringup</exec_depend>
+  <exec_depend>prodigimover-small_description</exec_depend>
+  <exec_depend>prodigimover-small_msgs</exec_depend>
+  <exec_depend>prodigimover-small_navigation</exec_depend>
+  <exec_depend>prodigimover-small_simulation</exec_depend>
+  <exec_depend>prodigimover-small_slam</exec_depend>
+  <exec_depend>prodigimover-small_teleop</exec_depend>
+  
+  <export><metapackage/></export>
+</package>
