@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>prodigimover-navigation</name>
+  <name>prodigimover-small_navigation</name>
   <version>0.0.0</version>
   <description>The prodigimover-small_navigation package</description>
 
@@ -10,7 +10,7 @@
 
   <author email="demirneslihan85@gmail.com">Neslihan Demir</author>
 
-
+  
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>amcl</build_depend>
   <build_depend>geometry_msgs</build_depend>
@@ -41,4 +41,9 @@
   <exec_depend>tf2_ros</exec_depend>
 
 
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
 </package>

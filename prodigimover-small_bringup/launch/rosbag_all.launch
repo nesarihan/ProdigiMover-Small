@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="rosbag" type="record" args="-a -o /home/robotics/catkin_ws/src/Prodigimover/prodigimover_bringup/bag" />
+    
+</launch>

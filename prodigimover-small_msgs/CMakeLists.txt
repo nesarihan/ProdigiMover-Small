@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(prodigimover-small_msgs)
+project(prodigimoversmall_msgs)
 
 add_compile_options(-std=c++11)
 

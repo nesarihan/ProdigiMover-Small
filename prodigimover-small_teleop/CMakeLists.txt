@@ -30,25 +30,25 @@ catkin_install_python(PROGRAMS nodes/prodigimover_teleop_key
 )
 
 
-add_library(teleop_twist_joy  src/teleop_twist_joy)
-target_link_libraries(teleop_twist_joy ${catkin_LIBRARIES})
-add_executable(teleop_node src/teleop_node.cpp)
+#add_library(teleop_twist_joy  src/teleop_twist_joy)
+#target_link_libraries(teleop_twist_joy ${catkin_LIBRARIES})
+#add_executable(teleop_node src/teleop_node.cpp)
 #add_executable(f710_teleop_joy_node src/f710_teleop_joy_node.cpp)
-target_link_libraries(teleop_node teleop_twist_joy ${catkin_LIBRARIES})
-add_dependencies(teleop_twist_joy prodigimover_msgs_generate_messages_cpp)
+#target_link_libraries(teleop_node teleop_twist_joy ${catkin_LIBRARIES})
+#add_dependencies(teleop_twist_joy prodigimover_msgs_generate_messages_cpp)
 #add_dependencies(f710_teleop_joy_node prodigimover_msgs_generate_messages_cpp)
 
 #set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
   
-install(TARGETS teleop_twist_joy teleop_node
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS teleop_twist_joy teleop_node
+#  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 
-install(DIRECTORY include/teleop_twist_joy
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+#install(DIRECTORY include/teleop_twist_joy
+#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#)
 
 
 

@@ -31,7 +31,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   )
 
-add_library(prodigimover_odom src/prodigimover_odom.cpp)
-add_executable(prodigimover_odom_node src/prodigimover_odom_node.cpp)
-target_link_libraries(prodigimover_odom_node  prodigimover_odom ${catkin_LIBRARIES})
-add_dependencies(prodigimover_odom prodigimover_msgs_generate_messages_cpp)
+add_library(prodigimover_small_odom src/prodigimover_small_odom.cpp)
+add_executable(prodigimover_small_odom_node src/prodigimover_small_odom_node.cpp)
+target_link_libraries(prodigimover_small_odom_node  prodigimover_small_odom ${catkin_LIBRARIES})
+add_dependencies(prodigimover_small_odom prodigimover_msgs_generate_messages_cpp)
