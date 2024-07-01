@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <param name="robot_description" command="$(find xacro)/xacro '$(find prodigimover_description)/urdf/prodigimover.urdf'"/>
+    
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+          <param name="publish_frequency" type="double" value="10.0" />
+    </node>
+    
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen"/>
+    
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find prodigimover_description)/rviz/description.rviz"/>
+
+</launch>
