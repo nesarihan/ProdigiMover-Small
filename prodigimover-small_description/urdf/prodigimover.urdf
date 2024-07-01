@@ -17,18 +17,18 @@
                     izz="0.00493927269870476"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="-0.1125 -0.075 -0.054" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/Base_Link.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/base_link.STL" />
             </geometry>
             <material name="">
                 <color rgba="0 0.7 0 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="-0.1125 -0.075 -0.054" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/Base_Link.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/base_link.STL"/>
             </geometry>
         </collision>
     </link>
@@ -50,18 +50,18 @@
                      iyy="1.4594E-05" iyz="-1.7476E-09" izz="2.4264E-05"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/front_right_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/front_right_wheel.STL"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/front_right_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/front_right_wheel.STL"/>
             </geometry>
         </collision>
     </link>
@@ -80,18 +80,18 @@
                      iyy="1.4598E-05" iyz="1.7972E-09" izz="2.4267E-05"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/front_left_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/front_left_wheel.STL"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/front_left_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/front_left_wheel.STL"/>
             </geometry>
         </collision>
     </link>
@@ -110,18 +110,18 @@
                      iyy="1.4596501955693E-05" iyz="-6.27904057423818E-10" izz="2.42663091380451E-05"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/back_right_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/back_right_wheel.STL"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/back_right_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/back_right_wheel.STL"/>
             </geometry>
         </collision>
     </link>
@@ -140,18 +140,18 @@
                      iyy="1.45948727598913E-05" iyz="1.61769812110049E-10" izz="2.4263683888153E-05"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/back_left_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/back_left_wheel.STL"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/back_left_wheel.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/back_left_wheel.STL"/>
             </geometry>
         </collision>
     </link>
@@ -170,9 +170,9 @@
                      iyy="3.89262522903605E-05" iyz="3.24809725932687E-07" izz="4.86230801106223E-05" />
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0.045 -0.025" rpy="1.5707 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/laser_link.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/ProdigiMover_YDLidar_G2.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
@@ -181,7 +181,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/laser_link.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/ProdigiMover_YDLidar_G2.stl" scale="0.001 0.001 0.001"/>
             </geometry>
         </collision>
     </link>
@@ -197,18 +197,18 @@
             <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.024" rpy="0 0 1.5707"/>
             <geometry>
-                <mesh filename="package://prodigimover_description/meshes/camera_link.STL"/>
+                <mesh filename="package://prodigimover-small_description/meshes/ProdigiMover_Zedmini_Camera.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="">
                 <color rgba="0.7 0.7 0.7 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 -0.024" rpy="0 0 1.5707"/>
             <geometry>
-                <mesh filename="package://prodigim_description/meshes/camera_link.STL"/>
+                <mesh filename="package://prodigimover_description/meshes/ProdigiMover_Zedmini_Camera.stl" scale="0.001 0.001 0.001"/>
             </geometry>
         </collision>
     </link>
