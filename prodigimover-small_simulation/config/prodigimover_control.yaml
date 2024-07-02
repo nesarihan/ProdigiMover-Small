@@ -1,0 +1,14 @@
+prodigimover:
+  #Publish all joint states -------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 20
+
+
+#  mobile_base_controller:
+##    type: "omni_triangle_controller/OmniDriveController"
+#    type: base_simple_controller/BaseSimpleController
+#    wheel1: 'wheel_front_left'
+#    wheel2: 'wheel_rear_left'
+#    wheel3: 'wheel_rear_right'
+#    wheel4: 'wheel_front_right'

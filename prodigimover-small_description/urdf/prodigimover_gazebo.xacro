@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+
+<robot name="prodigimover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="prodigimover_gazebo">
+        <!-- GAZEBO PLUGINS -->
+
+        <gazebo reference="wheel_front_right_link">
+        <material value="Gazebo/FlatBlack"/>
+        <mu1>2.0</mu1>
+        <mu2>2.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>1.0</kd>
+        <fdir1>0 0 1</fdir1>
+        <turnGravityOff>false</turnGravityOff>
+        </gazebo>   
+
+        <gazebo reference="wheel_front_left_link">
+        <material value="Gazebo/FlatBlack"/>
+        <mu1>2.0</mu1>
+        <mu2>2.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>1.0</kd>
+        <fdir1>0 0 1</fdir1>
+        <turnGravityOff>false</turnGravityOff>
+        </gazebo>   
+
+        <gazebo reference="wheel_rear_right_link">
+        <material value="Gazebo/FlatBlack"/>
+        <mu1>2.0</mu1>
+        <mu2>2.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>1.0</kd>
+        <fdir1>0 0 1</fdir1>
+        <turnGravityOff>false</turnGravityOff>
+        </gazebo>   
+
+        <gazebo reference="wheel_rear_left_link">
+        <material value="Gazebo/FlatBlack"/>
+        <mu1>2.0</mu1>
+        <mu2>2.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>1.0</kd>
+        <fdir1>0 0 1</fdir1>
+        <turnGravityOff>false</turnGravityOff>
+        </gazebo> 
+
+        <!-- <gazebo>
+            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+                <robotNamespace>/prodigimover</robotNamespace>
+                <robotParam>robot_description</robotParam>
+                <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+                <legacyModeNS>true</legacyModeNS>
+            </plugin>
+        </gazebo> -->
+
+        <!-- Transmission is important to link the joints and the controller -->
+        <transmission name="wheel_front_right_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wheel_front_right_joint"/>
+            <actuator name="wheel_front_right_joint_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="wheel_front_left_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wheel_front_left_joint"/>
+            <actuator name="wheel_front_left_joint_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="wheel_rear_right_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wheel_rear_right_joint"/>
+            <actuator name="wheel_rear_right_joint_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="wheel_rear_left_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="wheel_rear_left_joint"/>
+            <actuator name="wheel_rear_left_joint_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <!-- Skid Steer Drive -->
+        <gazebo>
+            <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+                <updateRate>100.0</updateRate>
+                <robotNamespace>prodigimover</robotNamespace>
+                <leftFrontJoint>wheel_rear_left_joint</leftFrontJoint>
+                <rightFrontJoint>wheel_rear_right_joint</rightFrontJoint>
+                <leftRearJoint>wheel_front_left_joint</leftRearJoint>
+                <rightRearJoint>wheel_front_right_joint</rightRearJoint>
+                <wheelSeparation>0.22327209</wheelSeparation>
+                <wheelDiameter>0.06788375</wheelDiameter>
+                <robotBaseFrame>base_link</robotBaseFrame>
+                <torque>200</torque>
+                <MaxForce>5.0</MaxForce>
+                <topicName>cmd_vel</topicName>
+                <commandTopic>cmd_vel</commandTopic>
+                <odometryTopic>odom</odometryTopic>
+                <odometryFrame>odom</odometryFrame>
+                <publish_odom>true</publish_odom>
+                <publish_odom_tf>true</publish_odom_tf>
+                <publish_wheel_tf>true</publish_wheel_tf>
+                <covariance_x>0.0001</covariance_x>
+                <covariance_y>0.0001</covariance_y>
+                <covariance_roll>0.01</covariance_roll>
+                <covariance_yaw>0.01</covariance_yaw>
+            </plugin>
+        </gazebo>
+
+        <gazebo reference="laser_link" >
+            <material value="Gazebo/Red" />
+            <sensor type="ray" name="lidar" >
+                <tf_prefix>prodigimover</tf_prefix>
+                <pose>0 0 0 0 0 0</pose>
+                <always_on>true</always_on>
+                <visualize>false</visualize>
+                <update_rate>10</update_rate>
+                <ray>
+                    <scan>
+                        <horizontal>
+                            <samples>720</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-3.141592</min_angle>
+                            <max_angle>3.141592</max_angle>
+                        </horizontal>
+                    </scan>
+                    <range>
+                        <min>0.12</min>
+                        <max>16.0</max>
+                        <resolution>0.03</resolution>
+                    </range>
+                    <noise>
+                        <type>gaussian</type>
+                        <mean>0.0</mean>
+                        <stddev>0.01</stddev>
+                    </noise>
+                </ray>
+                <plugin name="laser_scan_plugin" filename="libgazebo_ros_laser.so" >
+                    <output_type>sensor_msgs/LaserScan</output_type>
+                    <robotNamespace>prodigimover</robotNamespace>
+                    <topicName>scan</topicName>
+                    <frameName>laser_link</frameName>
+                </plugin>
+            </sensor>
+        </gazebo>
+
+        <!-- IMU Sensor -->
+        <gazebo reference="imu_link" >
+            <gravity>true</gravity>
+            <sensor name="imu_sensor" type="imu">
+                <always_on>true</always_on>
+                <update_rate>100.0</update_rate>
+                <visualize>true</visualize>
+                <topic>imu_data</topic>
+                <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so" >
+                    <robotNamespace>prodigimover</robotNamespace>
+                    <topicName>imu_data</topicName>
+                    <bodyName>imu_link</bodyName>
+                    <updateRateHZ>100.0</updateRateHZ>
+                    <gaussianNoise>0.0</gaussianNoise>
+                    <xyzOffset>0 0 0</xyzOffset>
+                    <rpyOffset>0 0 0</rpyOffset>
+                    <frameName>imu_link</frameName>
+                    <initialOrientationAsReference>false</initialOrientationAsReference>
+                </plugin>
+                <pose>0 0 0 0 0 0</pose>
+            </sensor>
+        </gazebo>
+    </xacro:macro>
+        
+</robot>
