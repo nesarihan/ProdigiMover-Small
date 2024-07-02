@@ -5,8 +5,8 @@
     <arg name="z_pos" default="0"/>
     
     <!-- <node name="tf_footprint_base" pkg="tf"   type="static_transform_publisher"   args="0 0 0 0 0 0 base_link robot_footprint 40" />
-    <node name="tf_laser_base" pkg="tf" type="static_transform_publisher" args="0.012548 0 0.1311 0 0 0 base_link laser_link 40" />
-    <node name="tf_camera_base" pkg="tf" type="static_transform_publisher" args="0.095117 0 0.09955 0 0.0057171 0 base_link camera_link 40" />-->
+    <node name="tf_laser_base" pkg="tf" type="static_transform_publisher" args="0.012548 0 0.1311 0 0 0 laser_link base_link 40" />
+    <node name="tf_camera_base" pkg="tf" type="static_transform_publisher" args="0.095117 0 0.09955 0 0.0057171 0 camera_link base_link 40" />-->
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find prodigimover-small_simulation)/worlds/workhouse.world"/>
