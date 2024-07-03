@@ -6,5 +6,6 @@
     "python.analysis.extraPaths": [
         "/home/mechanical_engineering/catkin_ws/devel/lib/python3/dist-packages",
         "/opt/ros/noetic/lib/python3/dist-packages"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 }
