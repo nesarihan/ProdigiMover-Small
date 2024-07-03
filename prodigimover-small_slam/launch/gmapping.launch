@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>    
 
-    <!--<include file="$(find prodigimover-small_simulation)/launch/prodigimover_gazebo03.launch"/>
-    <param name="robot_description" command="$(find xacro)/xacro '$(find prodigimover-small_description)/urdf/prodigimover.urdf.xacro'" />-->
+    <!--<include file="$(find prodigimover-small_simulation)/launch/prodigimover_gazebo03.launch"/>-->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find prodigimover-small_description)/urdf/prodigimover.urdf.xacro'" />
 
     <node name="tf_map_odom" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map odom 40" />
     <node name="tf_odom_footprint" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 odom robot_footprint 40" />

@@ -7,11 +7,11 @@
           <param name="publish_frequency" type="double" value="10.0" />
     </node>
     
-    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" unless="$(arg use_gui)" output="screen"/>
+    <!--<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" unless="$(arg use_gui)" output="screen"/>
 
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"
           if="$(arg use_gui)"/>
   
-    <!--<node pkg="rviz" type="rviz" name="rviz" args="-d $(find prodigimover-small_description)/rviz/description.rviz"/>-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find prodigimover-small_description)/rviz/description.rviz"/>-->
 
 </launch>
