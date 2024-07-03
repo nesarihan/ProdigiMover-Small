@@ -28,11 +28,8 @@
     <!-- Allow for Gazebo to broadcast odom 
     <node pkg="racecar_gazebo" name="gazebo_odometry_node" type="gazebo_odometry.py"/>-->
 
-    <!-- load the controllers 
+    <!-- load the controllers -->
     <node name="controller_manager" pkg="controller_manager" type="spawner" respawn="false"
-        output="screen" ns="prodigimover" args="left_rear_wheel_velocity_controller right_rear_wheel_velocity_controller
-                                            left_front_wheel_velocity_controller right_front_wheel_velocity_controller
-                                            left_steering_hinge_position_controller right_steering_hinge_position_controller
-                                            joint_state_controller"/>-->
+        output="screen" ns="prodigimover" args="joint_state_controller wheel_front_right_controller wheel_front_left_controller wheel_rear_right_controller wheel_rear_left_controller"/>
   
 </launch>
