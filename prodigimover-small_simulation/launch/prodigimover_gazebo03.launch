@@ -7,7 +7,7 @@
     <node name="tf_camera_base" pkg="tf" type="static_transform_publisher" args="0.095117 0 0.09955 0 0.0057171 0 camera_link base_link 40" />-->
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find prodigimover-small_simulation)/worlds/turtlebot3_autorace.world"/>
+        <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_autorace.world"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
