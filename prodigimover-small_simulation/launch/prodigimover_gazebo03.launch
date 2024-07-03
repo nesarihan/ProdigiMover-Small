@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="robot_pose" default="-x 0.0 -y 0.0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+    <arg name="robot_pose" default="-X 0.0 -Y 0.0 -Z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
     
-    <!-- <node name="tf_footprint_base" pkg="tf"   type="static_transform_publisher"   args="0 0 0 0 0 0 base_link robot_footprint 40" />
+    <!--<node name="tf_footprint_base" pkg="tf"   type="static_transform_publisher"   args="0 0 0 0 0 0 base_link robot_footprint 40" />
     <node name="tf_laser_base" pkg="tf" type="static_transform_publisher" args="0.012548 0 0.1311 0 0 0 laser_link base_link 40" />
     <node name="tf_camera_base" pkg="tf" type="static_transform_publisher" args="0.095117 0 0.09955 0 0.0057171 0 camera_link base_link 40" />-->
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find prodigimover-small_simulation)/worlds/turtlebot3_autorace.world"/>
         <arg name="paused" value="false"/>
-        <arg name="use_sim_time" value="true"/>
+        <arg name="use_sim_time" value="false"/>
         <arg name="gui" value="true"/>
         <arg name="headless" value="false"/>
         <arg name="debug" value="false"/>
@@ -20,11 +20,9 @@
 
     <!--<node pkg="rviz" type="rviz" name="rviz" args="-d $(find prodigimover-small_simulation)/rviz/gazebo.rviz"/>-->
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model prodigimover-small -param robot_description $(arg robot_pose)" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model prodigimover -param robot_description $(arg robot_pose)" />
         <!-- load the controllers -->
         <!--include file="$(find prodigimover_bringup)/launch/bringup_calib.launch"/>-->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node  name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
     <!-- Allow for Gazebo to broadcast odom 
     <node pkg="racecar_gazebo" name="gazebo_odometry_node" type="gazebo_odometry.py"/>-->
