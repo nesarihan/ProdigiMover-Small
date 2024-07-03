@@ -152,7 +152,7 @@
       <direction>0 0 -1</direction>
     </light>
     <state world_name='default'>
-      <sim_time>116 345000000</sim_time>
+      <sim_time>0</sim_time>
       <real_time>32 693566475</real_time>
       <wall_time>1525097329 747995208</wall_time>
       <iterations>32558</iterations>

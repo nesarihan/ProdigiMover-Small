@@ -9,10 +9,11 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find prodigimover-small_simulation)/worlds/turtlebot3_autorace.world"/>
         <arg name="paused" value="false"/>
-        <arg name="use_sim_time" value="false"/>
+        <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
         <arg name="headless" value="false"/>
         <arg name="debug" value="false"/>
+        
     </include>
 
     <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
