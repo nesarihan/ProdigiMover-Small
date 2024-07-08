@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Map server -->
+    <arg name="map_file" default="$(find prodigimover-small_navigation)/maps/map.yaml"/>
+    
+    <!-- Arguments -->
+    <arg name="init_pose_x" default="0.8"/>
+    <arg name="init_pose_y" default="-1.747"/>
+    <arg name="init_pose_a" default="0.0"/>
+
+    <!-- AMCL Localization -->
+    <node pkg="amcl" type="amcl" name="amcl">
+        <!-- Publish scans from best pose at a max of 10 Hz -->
+        <param name="min_particles"             value="100"/>
+        <param name="max_particles"             value="5000"/>
+        <param name="kld_err"                   value="0.05"/>
+        <param name="kld_z"                     value="0.99"/>
+        <param name="transform_tolerance"       value="0.2" />
+        <param name="gui_publish_rate"          value="30.0"/>
+        <param name="laser_max_beams"           value="30"/>
+        <!-- translation std dev, m -->
+        <param name="odom_alpha1"               value="0.2"/>
+        <param name="odom_alpha2"               value="0.2"/>
+        <param name="odom_alpha3"               value="0.8"/>
+        <param name="odom_alpha4"               value="0.2"/>
+        <param name="odom_alpha5"               value="0.1"/>
+        <param name="laser_max_range"           value="3.5"/>
+        <param name="laser_max_beams"           value="180"/>
+        <param name="laser_z_hit"               value="0.5"/>
+        <param name="laser_z_short"             value="0.05"/>
+        <param name="laser_z_max"               value="0.05"/>
+        <param name="laser_z_rand"              value="0.5"/>
+        <param name="laser_sigma_hit"           value="0.2"/>
+        <param name="laser_lambda_short"        value="0.1"/>
+        <param name="laser_model_type"          value="likelihood_field"/>
+        <!-- <param name="laser_model_type" value="beam"/> -->
+        <param name="laser_likelihood_max_dist" value="2.0"/>
+        <param name="update_min_d"              value="0.20"/>
+        <param name="update_min_a"              value="6.0"/>
+        <param name="resample_interval"         value="1"/>
+        <param name="transform_tolerance"       value="0.2"/> <!--time with which to post-date the transform that is published, to indicate that this transform is valid into the future.-->
+        <param name="recovery_alpha_slow"       value="0.001"/> <!-- Exponential decay rate for the slow average weight filter, used in deciding when to recover by adding random poses. -->
+        <param name="recovery_alpha_fast"       value="0.1"/> <!-- Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. -->
+        
+        <param name="use_map_topic"             value="true"/>
+        <param name="first_map_only"            value="true"/>
+        <param name="tf_broadcast"              value="true"/>
+        
+        <param name="gui_publish_rate"          value="10.0"/>
+
+        <param name="odom_frame_id"             value="odom"/>
+        <param name="global_frame_id"           value="map"/>
+        <param name="base_frame_id"             value="robot_footprint"/>
+        <param name="odom_model_type"           value="diff-corrected"/>
+        
+        <remap from="scan"                      to="scan"/>
+        <remap from="map"                       to="/map"/>
+
+        <param name="initial_pose_x"            value="$(arg init_pose_x)"/>
+        <param name="initial_pose_y"            value="$(arg init_pose_y)"/>
+        <param name="initial_pose_a"            value="$(arg init_pose_a)"/>
+        <param name="initial_cov_xx"            value="0.25" />
+        <param name="initial_cov_yy"            value="0.25" />
+        <param name="initial_cov_aa"            value="0.2" />
+        
+    </node>
+
+    <!-- Move Base -->
+    <node name="move_base" pkg="hybrid_astar" type="hybrid_astar" output="screen">
+    <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"> -->
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/global_costmap_params.yaml" command="load" /> 
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/move_base_params.yaml" command="load" />
+        <rosparam file="$(find hybrid_astar_planner)/test_the_plugin/param/plugins.yaml" command="load" ns="/costmap_node/costmap"/>
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+        <param name="use_hybrid_astar" value="true" />
+    </node>
+    
+    <node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" />
+    <node pkg="map_server" name="map_server"  type="map_server" args="$(arg map_file)" />
+
+        <!-- rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find prodigimover-small_navigation)/rviz/hybrid_astar.rviz"/>
+
+</launch>

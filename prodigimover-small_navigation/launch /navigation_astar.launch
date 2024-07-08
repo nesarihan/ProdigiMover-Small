@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-    <!--<include file="$(find prodigimover_navigation)/launch/ydlidar.launch" />-->
 
     <!-- Map server 
     <arg name="map_file" default="$(find prodigimover_navigation)/maps/map04.yaml"/>
@@ -13,6 +12,6 @@
     <include file="$(find prodigimover-small_navigation)/launch/hybrid_astar.launch" />
 
     <!-- rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find prodigimover-small_navigation)/rviz/navigation.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find prodigimover-small_navigation)/rviz/hybrid_astar.rviz"/>
 
 </launch>
