@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="map_file" default="$(find prodigimover_navigation)/maps/map04.yaml"/>
-    <!-- Run the map_server node -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+    <!--<arg name="map_file" default="$(find prodigimover-small_navigation)/maps/map.yaml"/>-->
+    <!-- Run the map_server node
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />-->
     
     <!-- Arguments -->
-    <arg name="initial_pose_x" default="0.0"/>
-    <arg name="initial_pose_y" default="0.0"/>
-    <arg name="initial_pose_a" default="0.0"/>
+    <arg name="init_pose_x" default="0.8"/>
+    <arg name="init_pose_y" default="-1.747"/>
+    <arg name="init_pose_a" default="0.0"/>
 
     <!-- AMCL -->
     <node pkg="amcl" type="amcl" name="amcl">
@@ -48,9 +48,6 @@
         <param name="first_map_only"            value="true"/>
         <param name="tf_broadcast"              value="true"/>
         
-        <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
-        <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
-        <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
         <param name="gui_publish_rate"          value="10.0"/>
 
         <param name="odom_frame_id"             value="odom"/>
@@ -58,15 +55,16 @@
         <param name="base_frame_id"             value="robot_footprint"/>
         <param name="odom_model_type"           value="diff-corrected"/>
         
-        <remap from="scan"                      to="prodigimover/scan"/>
+        <remap from="scan"                      to="scan"/>
         <remap from="map"                       to="/map"/>
 
-        <param name="initial_pose_x"            value="$(arg init_x)"/>
-        <param name="initial_pose_y"            value="$(arg init_y)"/>
-        <param name="initial_pose_a"            value="$(arg init_a)"/>
+        <param name="initial_pose_x"            value="$(arg init_pose_x)"/>
+        <param name="initial_pose_y"            value="$(arg init_pose_y)"/>
+        <param name="initial_pose_a"            value="$(arg init_pose_a)"/>
         <param name="initial_cov_xx"            value="0.25" />
         <param name="initial_cov_yy"            value="0.25" />
         <param name="initial_cov_aa"            value="0.2" />
         
     </node>
+    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find prodigimover-small_navigation)/rviz/amcl.rviz"/>-->
 </launch>

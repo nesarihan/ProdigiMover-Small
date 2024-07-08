@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <!--<include file="$(find prodigimover_navigation)/launch/ydlidar.launch" />-->
+
+    <!-- Map server 
+    <arg name="map_file" default="$(find prodigimover_navigation)/maps/map04.yaml"/>
+    <node pkg="map_server" name="map_server"  type="map_server" args="$(arg map_file)" />-->
+    
+    <!-- AMCL Localization -->
+    <include file="$(find prodigimover-small_navigation)/launch/amcl.launch" />
+    
+    <!-- Move Base -->
+    <include file="$(find prodigimover-small_navigation)/launch/hybrid_astar.launch" />
+
+    <!-- rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find prodigimover-small_navigation)/rviz/navigation.rviz"/>
+
+</launch>

@@ -48,7 +48,7 @@
         <param name="transform_publish_period"  value="0.1"/>
     </node>
 
-<!-- Start robot state publisher -->
+    <!-- Start robot state publisher -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
     <!-- Start joint state publisher -->
