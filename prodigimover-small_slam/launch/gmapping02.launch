@@ -1,20 +1,13 @@
 <?xml version="1.0"?>
 <launch>    
 
-    <!--<include file="$(find prodigimover-small_simulation)/launch/prodigimover_gazebo03.launch"/>-->
-
-    <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find prodigimover-small_description)/urdf/prodigimover-small.urdf'" />
-    <!--<param name="robot_description" command="$(arg urdf_file)" />-->
-
-    <node  name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node name="tf_map_odom" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map odom 40" />
-    <node name="tf_odom_footprint" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 odom robot_footprint 40" />
+    <!-- Use simulated time from Gazebo -->
+    <param name="use_sim_time" value="true"/>
 
     <!-- Gmapping -->
 
     <arg name="scan_topic"  default="scan" />
-    <arg name="base_frame"  default="base_link"/>
+    <arg name="base_frame"  default="robot_footprint"/>
     <arg name="odom_frame"  default="odom"/>
     <arg name="map_frame"   default="map"/>
 
@@ -55,9 +48,15 @@
         <param name="transform_publish_period"  value="0.1"/>
     </node>
 
+<!-- Start robot state publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <!-- Start joint state publisher -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 
 
-    <!-- rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find prodigimover-small_slam)/rviz/gmapping.rviz"/>
+
+    <!-- Start RViz for visualization -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find prodigimover-small_slam)/rviz/gmapping03.rviz" />
     
 </launch>

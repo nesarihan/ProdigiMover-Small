@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="prodigimover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="prodigimover-small" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find prodigimover-small_description)/urdf/prodigimover_gazebo.xacro" />
     <xacro:prodigimover_gazebo />
     <link name="robot_footprint"/>
@@ -23,7 +23,7 @@
                 <mesh filename="package://prodigimover-small_description/meshes/base_link.STL" />
             </geometry>
             <material name="">
-                <color rgba="0 0.7 0 1"/>
+                <color rgba="0 0.1 0 1"/>
             </material>
         </visual>
         <collision>
